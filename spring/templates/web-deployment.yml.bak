@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  #name: {{ .Values.webapp.name }}
+  name: spring-petclinic
+  labels:
+    #app: {{ .Values.webapp.name }}
+    app: spring-petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.webapp.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.webapp.name }}
+    spec:
+      containers: 
+        - name: {{ .Values.webapp.name }}
+         #image: {{ .Values.webapp.repo }}/{{ .Values.webapp.image }}:{{ .Values.webapp.tag }}
+          image: choopcloud/spring-petclinic
+          ports:
+            - containerPort: {{ .Values.webapp.port }}
