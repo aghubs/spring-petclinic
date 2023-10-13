@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-applicaion
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/aghubs/spring-petclinic.git
+    targetRevision: HEAD
+    path: chart
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myapp-argo
+
+  syncPolicy:
+    syncOptions: #this will create namespace if it doesnt exist(default is not)
+    - CreateNamespace=true
+    autometed: 
+      selfHeal: true #By default, changes made to the live cluster will not trigger automated sync(#check for pull every 3 min)
+      prune: true  #By default, automatic sync will not delete resources if we will delete it.
