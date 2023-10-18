@@ -5,7 +5,9 @@ metadata:
   labels:
     app: spring-petclinic
 spec:
-  replicas: 2
+  replicas: 1
+  #check commit for learning
+  #check 2
   selector:
     matchLabels:
       app: spring-petclinic
