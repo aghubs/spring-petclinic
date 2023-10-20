@@ -6,7 +6,8 @@ def DEPLOY = false
 def artifactory = "docker.io" 
 def repo = "choopcloud"
 def appimage = "${artifactory}/${repo}/${appname}"
-def apptag = "${build}"
+def apptag = latest
+//def apptag = "${build}"
 
 def kubernetesurl = "https://kubernetes.default.svc"
 
