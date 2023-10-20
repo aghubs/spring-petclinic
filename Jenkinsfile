@@ -1,10 +1,10 @@
 def branch = env.BRANCH_NAME
 def build = env.BUILD_NUMBER
 def DEBUG = true
-def appname ="helloworld"
+def appname ="spring-petclinic"
 def DEPLOY = false
 def artifactory = "docker.io" 
-def repo = "aghubs"
+def repo = "choopcloud"
 def appimage = "${artifactory}/${repo}/${appname}"
 def apptag = "${build}"
 
