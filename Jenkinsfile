@@ -26,7 +26,7 @@ podTemplate(containers: [
       containerTemplate(name: 'docker', image: 'gcr.io/kaniko-project/executor:debug-v0.19.0', command: "/busybox/cat", ttyEnabled: true)
   ],
   volumes: [
-     configMapVolume(mountPath: '/kaniko/.docker/', configMapName: 'docker-cred')
+     configMapVolume(mountPath: '/run/desktop/mnt/host/wsl/kaniko/.docker/', configMapName: 'docker-cred')
   ])  {
     node(POD_LABEL) {
         stage('chackout') {
