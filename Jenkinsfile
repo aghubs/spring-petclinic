@@ -45,6 +45,7 @@ podTemplate(containers: [
                 sh  """
                 /kaniko/executor --context=${env.WORKSPACE}/spring-petclinic  \
                 --destination ${appimage}:${apptag} \
+		--dockerfile=kaniko-deployment/Dockerfile \
                 --force \
                 -v=debug
               """
