@@ -4,9 +4,9 @@ def DEBUG = true
 def appname ="spring-petclinic"
 def DEPLOY = false
 def artifactory = "dicker.io"
-def repo = "elevy99927jbdemo" 
+def repo = "choopcloud" 
 def appimage = "${artifactory}${repo}/${appname}"
-def apptag = "eyal-13"
+def apptag = "latest"
 //def apptag = "eyal-${build}"
 
 def kubernetesurl = "https://kubernetes.default.svc"
