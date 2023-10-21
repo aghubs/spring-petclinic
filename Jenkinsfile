@@ -6,7 +6,8 @@ def DEPLOY = false
 def artifactory = "dicker.io"
 def repo = "elevy99927jbdemo" 
 def appimage = "${artifactory}${repo}/${appname}"
-def apptag = "eyal-${build}"
+def apptag = "eyal-13"
+//def apptag = "eyal-${build}"
 
 def kubernetesurl = "https://kubernetes.default.svc"
 
