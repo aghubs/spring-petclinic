@@ -3,9 +3,9 @@ def build = env.BUILD_NUMBER
 def DEBUG = true
 def appname ="spring-petclinic"
 def DEPLOY = false
-def artifactory = "dicker.io"
+def artifactory = "docker.io"
 def repo = "choopcloud" 
-def appimage = "${artifactory}${repo}/${appname}"
+def appimage = "${artifactory}/${repo}/${appname}"
 def apptag = "latest"
 //def apptag = "eyal-${build}"
 
