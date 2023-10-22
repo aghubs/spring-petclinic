@@ -14,7 +14,7 @@
 # limitations under the License.
 
 FROM golang:1.20 AS builder
-WORKDIR /src
+WORKDIR /srv
 
 # This arg is passed by docker buildx & contains the target CPU architecture (e.g., amd64, arm64, etc.)
 ARG TARGETARCH
