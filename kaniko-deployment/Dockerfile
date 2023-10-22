@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.2
+# syntax=docker/dockerfile:1
 # Copyright 2018 Google, Inc. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 # limitations under the License.
 
 FROM golang:1.20 AS builder
-WORKDIR /srv
+WORKDIR /src
 
 # This arg is passed by docker buildx & contains the target CPU architecture (e.g., amd64, arm64, etc.)
 ARG TARGETARCH
@@ -48,8 +48,8 @@ COPY . .
 # Get ACR docker env credential helper
 
 RUN \
-  --mount=type=cache,target=/root/.cache/go-build \
-  --mount=type=cache,target=/go/pkg \
+#  --mount=type=cache,target=/root/.cache/go-build \
+#  --mount=type=cache,target=/go/pkg \
   make out/executor out/warmer
 
 # Generate latest ca-certificates
