@@ -48,8 +48,8 @@ COPY . .
 # Get ACR docker env credential helper
 
 RUN \
-  --mount=type=cache,target=/root/.cache/go-build \
-  --mount=type=cache,target=/go/pkg \
+  -v "$(pwd)":/root/.cache/go-build \
+  -v "$(pwd)":/go/pkg \
   make out/executor out/warmer
 
 # Generate latest ca-certificates
