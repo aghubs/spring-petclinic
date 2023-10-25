@@ -3,11 +3,10 @@ def build = env.BUILD_NUMBER
 def DEBUG = true
 def appname ="spring-petclinic"
 def DEPLOY = false
-def artifactory = "docker.io"
-def repo = "choopcloud" 
-def appimage = "${artifactory}/${repo}/${appname}"
-def apptag = "latest"
-//def apptag = "eyal-${build}"
+def artifactory = "docker.io"   //for example "docker.io/" or "myrepo.example.com/"
+def repo = "elevy99927jbdemo" 
+def appimage = "${artifactory}${repo}/${appname}"
+def apptag = "eyal-${build}"
 
 def kubernetesurl = "https://kubernetes.default.svc"
 
@@ -43,8 +42,7 @@ podTemplate(containers: [
             container('docker') {
                 sh "echo OK"
                 sh  """
-                /kaniko/executor --context ${env.WORKSPACE}/spring-petclinic  \
-		--dockerfile kaniko-deployment/Dockerfile \
+                /kaniko/executor --context=${env.WORKSPACE}/spring-petclinic  \
                 --destination ${appimage}:${apptag} \
                 --force \
                 -v=debug
@@ -69,5 +67,3 @@ podTemplate(containers: [
         } //end deploy
     }
 }
-
-
