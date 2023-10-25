@@ -4,7 +4,7 @@ def DEBUG = true
 def appname ="spring-petclinic"
 def DEPLOY = false
 def artifactory = "docker.io"   //for example "docker.io/" or "myrepo.example.com/"
-def repo = "elevy99927jbdemo" 
+def repo = "choopcloud" 
 def appimage = "${artifactory}/${repo}/${appname}"
 def apptag = "eyal-${build}"
 
