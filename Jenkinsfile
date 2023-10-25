@@ -5,7 +5,7 @@ def appname ="spring-petclinic"
 def DEPLOY = false
 def artifactory = "docker.io"   //for example "docker.io/" or "myrepo.example.com/"
 def repo = "elevy99927jbdemo" 
-def appimage = "${artifactory}${repo}/${appname}"
+def appimage = "${artifactory}/${repo}/${appname}"
 def apptag = "eyal-${build}"
 
 def kubernetesurl = "https://kubernetes.default.svc"
