@@ -43,7 +43,7 @@ BUILD_ARG ?=
 
 # Force using Go Modules and always read the dependencies from
 # the `vendor` folder.
-export GO111MODULE = off
+export GO111MODULE = on
 export GOFLAGS = -mod=vendor
 
 
