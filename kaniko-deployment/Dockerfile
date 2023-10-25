@@ -36,7 +36,8 @@ COPY . .
 # The versions of these tools and their transitive dependencies are controlled via go.mod.
 # To update the version of any tool installed here, run
 #
-RUN go get github.com/GoogleContainerTools/kaniko/cmd/executor
+RUN go install github.com/GoogleContainerTools/kaniko/cmd/executor@latest
+RUN go mod vendor
 #   go get <tool>@<commit-sha-or-tag>
 #   go mod vendor
 #
