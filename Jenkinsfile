@@ -38,12 +38,13 @@ podTemplate(containers: [
 
         stage('build') {
             container('docker') {
-              echo "Building docker image..."
-	      echo "Original step was using docker for build."
-	      echo "You will need to use kaniko instead"
-              sh "echo docker build -t $appimage --no-cache ."
-              sh "echo docker login $artifactory -u admin -p password"
-              sh "echo docker push $appimage"
+		sh ''''
+                /kaniko/executor --context ${env.WORKSPACE}/spring-petclinic  \
+                --dockerfile kaniko-deployment/Dockerfile \
+                --destination=${appimage}:${apptag} \
+                --force \
+                -v=debug
+                ''''
             }
         } //end build
 
