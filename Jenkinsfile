@@ -21,14 +21,13 @@ echo "----------  master   -------"
 
 }
 
-
 podTemplate(containers: [
       containerTemplate(name: 'jnlp', image: 'jenkins/inbound-agent', ttyEnabled: true),
       containerTemplate(name: 'docker', image: 'gcr.io/kaniko-project/executor:debug', command: "/busybox/cat", ttyEnabled: true)
   ],
   volumes: [
      configMapVolume(mountPath: '/kaniko/.docker/', configMapName: 'docker-cred')
-  ]) {
+  ])  {
     node(POD_LABEL) {
         stage('chackout') {
             container('jnlp') {
@@ -38,28 +37,19 @@ podTemplate(containers: [
         } // end chackout
 
         stage('build') {
-            echo "Building docker image..."
             container('docker') {
-                sh "echo OK"
-                sh  """
-                /kaniko/executor --context=git://github.com/aghubs/spring-petclinic.git \
-		--dockerfile=kaniko-deployment/Dockerfile \
-                --destination=${appimage}:${apptag} \
-                --force \
-                -v=debug
-              """
-              //sh "echo docker build -t $appimage --no-cache ."
-              //sh "echo docker login $artifactory -u admin -p 1234"
-              //sh "echo docker push $appimage"
-              //sh "sleep 9999"
+              echo "Building docker image..."
+	      echo "Original step was using docker for build."
+	      echo "You will need to use kaniko instead"
+              sh "echo docker build -t $appimage --no-cache ."
+              sh "echo docker login $artifactory -u admin -p password"
+              sh "echo docker push $appimage"
             }
         } //end build
 
         stage('deploy') {
             container('docker') {
-                 sh "sleep 9"
 	      if (DEPLOY) {
-	          sh "sleep 9 "
                 echo "***** Doing some deployment stuff *********"
              }  else {
                 echo "***** NO DEPLOY - Doing somthing else. Testing? *********"
@@ -68,3 +58,4 @@ podTemplate(containers: [
         } //end deploy
     }
 }
+ggg
