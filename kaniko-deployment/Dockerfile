@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1
 # Copyright 2018 Google, Inc. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.20 AS builder
+FROM golang:1.19 AS builder
 WORKDIR /src
 
 # This arg is passed by docker buildx & contains the target CPU architecture (e.g., amd64, arm64, etc.)
@@ -36,8 +35,6 @@ COPY . .
 # The versions of these tools and their transitive dependencies are controlled via go.mod.
 # To update the version of any tool installed here, run
 #
-RUN go install github.com/GoogleContainerTools/kaniko/cmd/executor@latest
-RUN go mod vendor
 #   go get <tool>@<commit-sha-or-tag>
 #   go mod vendor
 #
