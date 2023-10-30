@@ -59,4 +59,3 @@ podTemplate(containers: [
         } //end deploy
     }
 }
-ggg
