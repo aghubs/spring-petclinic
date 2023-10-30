@@ -39,7 +39,7 @@ podTemplate(containers: [
         stage('build') {
             container('docker') {
 		sh """
-                /kaniko/executor --context=${env.WORKSPACE}/spring-petclinic  \
+                /kaniko/executor --context=${github.workspace}/spring-petclinic  \
                 --dockerfile=kaniko-deployment/Dockerfile \
                 --destination=${appimage}:${apptag} \
                 --force \
