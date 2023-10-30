@@ -37,10 +37,11 @@ podTemplate(containers: [
         } // end chackout
 
         stage('build') {
-	    git 'https://github.com/aghubs/spring-petclinic.git'
             container('docker') {
 		sh """
-                /kaniko/executor -f `pwd`/kaniko-deployment/Dockerfile -c `pwd` --insecure --skip-tls-verify --destination=${appimage}:${apptag} \
+                /kaniko/executor --context-sub-path=https://github.com/aghubs/spring-petclinic/tree/8cf9ff02bb54df8bba2500933ad6c1a752ec74d6/kaniko-deployment  \
+                --dockerfile=Dockerfile \
+                --destination=${appimage}:${apptag} \
                 --force \
                 -v=debug
                 """
