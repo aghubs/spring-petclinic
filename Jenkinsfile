@@ -17,6 +17,7 @@ kubernetesurl = "https://kubernetes.default.svc"
 echo "----------  qa   -------"
 } else if  (branch == "main"){
 echo "----------  master   -------"
+kubernetesurl = "https://kubernetes.default.svc"
 } else {
 
 }
@@ -39,6 +40,7 @@ podTemplate(containers: [
         stage('build') {
 	steps {
             container('docker') {
+		sh "echo OK"
 		sh """
                 /kaniko/executor --context=git://github.com/aghubs/spring-petclinic.git  \
                 --dockerfile=Dockerfile \
