@@ -43,8 +43,6 @@ podTemplate(containers: [
                 /kaniko/executor --context=git://github.com/aghubs/spring-petclinic.git  \
                 --dockerfile=Dockerfile \
                 --destination=${appimage}:${apptag} \
-		--insecure \
-                --skip-tls-verify  \
                 --force \
                 -v=debug
                 """
