@@ -17,7 +17,6 @@ kubernetesurl = "https://kubernetes.default.svc"
 echo "----------  qa   -------"
 } else if  (branch == "main"){
 echo "----------  master   -------"
-kubernetesurl = "https://kubernetes.default.svc"
 } else {
 
 }
