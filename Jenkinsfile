@@ -37,8 +37,12 @@ podTemplate(containers: [
         } // end chackout
 
         stage('build') {
+          environment {
+            PATH = "/busybox:/kaniko:$PATH"
+          }
+	steps {
             container('docker') {
-		sh """
+		sh """#!/busybox/sh \
                 /kaniko/executor --context=git://github.com/aghubs/spring-petclinic.git  \
                 --dockerfile=Dockerfile \
                 --destination=${appimage}:${apptag} \
@@ -46,7 +50,8 @@ podTemplate(containers: [
                 -v=debug
                 """
             }
-        } //end build
+	}
+      } //end build
 
         stage('deploy') {
             container('docker') {
