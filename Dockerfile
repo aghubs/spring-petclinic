@@ -46,10 +46,10 @@ COPY . .
 
 # Get ACR docker env credential helper
 
-#RUN \
-#  --mount=type=cache,target=/root/.cache/go-build \
-#  --mount=type=cache,target=/go/pkg \
-#  make out/executor out/warmer
+RUN \
+  --mount=type=cache,target=/root/.cache/go-build \
+  --mount=type=cache,target=/go/pkg \
+  make out/executor out/warmer
 
 # Generate latest ca-certificates
 FROM debian:bullseye-slim AS certs
